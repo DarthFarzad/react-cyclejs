@@ -60,11 +60,16 @@ export function fetchToken(sources: any){
 }
 
 export function fetchPopularMovies(sources: any){
+    const filters = {
+        'release_date.gte':'2019-01-01',
+        'release_date.lte': '2020-01-01',
+        'sort_by':'popularity.desc'
+    }
     const movies$ = sources.ACTION
         .filter((action:any) => action.type === ActionTypes.RECEIVED_TOKEN);
 
     const request$ = movies$
-        .map((movie:any) => (withAuthToken('popular','movie/top_rated')))
+        .map((movie:any) => (withAuthToken('popular','discover/movie', filters)))
 
     const response$ = sources.HTTP
         .select('popular')
@@ -81,13 +86,10 @@ export function fetchPopularMovies(sources: any){
 
 export function fetchUpcomingMovies(sources: any){
     const movies$ = sources.ACTION
-        .filter((action:any) => action.type === ActionTypes.REQUESTED_UPCOMING_MOVIES);
+        .filter((action:any) => action.type === ActionTypes.RECEIVED_TOKEN);
 
     const request$ = movies$
-        .map((movie:any) => ({
-            url: getResourceUrl("movie/upcoming"),
-            category: 'upcoming'
-        }))
+        .map((movie:any) => (withAuthToken('upcoming', 'movie/upcoming')));
 
     const response$ = sources.HTTP
         .select('upcoming')
@@ -128,6 +130,7 @@ export function searchMovies(sources: any) {
         HTTP: request$,
     }
 }
+
 export function clearSearchResults(sources: any){
     const clear$ = sources.ACTION
         .filter((action:any) => action.type === ActionTypes.SEARCH_MOVIES)
@@ -138,5 +141,30 @@ export function clearSearchResults(sources: any){
     }
 }
 
+export function requestMovieDetails(sources: any) {
+    const movie$ = sources.ACTION
+        .filter((action:any) => action.type === ActionTypes.SELECT_MOVIE);
+
+    const request$ = movie$
+        .map((action:any) => withAuthToken('movie_details', 'movie/'+ action.payload.movie.id, {append_to_response: 'videos,with_cast'}));
+
+    const response$ = sources.HTTP
+        .select('movie_details')
+        .flatten();
+
+    const action$ = xs.combine(response$, movie$)
+        .map((res:any) => actions.receiveMovieDetails(res[0].body))
+    return {
+        ACTION: action$,
+        HTTP: request$
+    }
+}
+
 // @ts-ignore
-export default combineCycles(fetchToken, fetchPopularMovies, fetchUpcomingMovies, clearSearchResults, searchMovies);
+export default combineCycles(
+    fetchToken,
+    fetchPopularMovies,
+    fetchUpcomingMovies,
+    clearSearchResults,
+    searchMovies,
+    requestMovieDetails);

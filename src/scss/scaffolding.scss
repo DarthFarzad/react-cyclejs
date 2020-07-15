@@ -1,7 +1,16 @@
 .scaffold{
-  display: grid;
-  &--horizontal-slide{
-    grid-template-columns: repeat(auto-fill, 180px);
-    grid-gap: 16px;
+
+  &--horizontal-scroll{
+    overflow: hidden;
+    .row{
+      overflow-x: auto;
+      white-space: nowrap;
+      &:first-child{
+        margin-left: .5rem;
+      }
+      &:last-child{
+        margin-right: .5rem;
+      }
+    }
   }
 }

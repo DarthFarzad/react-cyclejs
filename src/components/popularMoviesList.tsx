@@ -10,8 +10,10 @@ interface Props {
 
 export default function PopularMoviesList({collection, loading, onClick}: Props) {
     return (
-        <section style={{opacity: loading ? 0.3 : 1 }} className="scaffold scaffold--horizontal-slide">
-            {collection.map((item:Movie) => <MoviePoster key={item.id} movie={item} size="lg" onClick={onClick} />)}
-        </section>
+        <div style={{opacity: loading ? 0.3 : 1 }} className="scaffold scaffold--horizontal-scroll">
+            <div className="row d-inline-block float-none">
+                {collection.map((item:Movie) => <MoviePoster key={item.id} movie={item} size="lg" onClick={onClick} />)}
+            </div>
+        </div>
     )
 }

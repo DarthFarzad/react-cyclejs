@@ -6,6 +6,7 @@ import configureStore from './configureStore';
 import './index.css';
 import App from './containers/App';
 import HomePage from './containers/HomePage';
+import NowPlaying from './containers/NowPlaying';
 import NotFoundPage from './containers/NotFoundPage';
 import * as serviceWorker from './serviceWorker';
 
@@ -18,6 +19,7 @@ ReactDOM.render(
           <App>
               <Switch>
                   <Route exact path="/"><HomePage /></Route>
+                  <Route exact path="/now-playing"><NowPlaying /></Route>
                   <Route path="*"><NotFoundPage/></Route>
               </Switch>
           </App>

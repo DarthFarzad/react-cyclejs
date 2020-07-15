@@ -1,18 +1,19 @@
 import React from 'react';
-import '../scss/poster.scss';
+import MoviePoster from './moviePoster';
 import {Movie} from "../models/Movie";
 
 interface Props {
-    collection: Array<Movie>,
-    loading: boolean
+    collection: Array<Movie>;
+    loading: boolean;
+    onClick: (movie:Movie) => void
 }
 
-export default function UpcomingMoviesList({collection, loading}: Props) {
+export default function UpcomingMoviesList({collection, loading, onClick}: Props) {
     return (
-        <ul style={{opacity: loading ? 0.3 : 1 }}>
-    {collection.map((item:Movie) => (
-        <li className="poster" key={item.id}>{item.title}</li>
-    ))}
-    </ul>
-)
+        <div style={{opacity: loading ? 0.3 : 1 }} className="scaffold--horizontal-scroll">
+            <div className="row d-inline-block float-none">
+                {collection.map((item:Movie) => <MoviePoster key={item.id} movie={item} size="sm" onClick={onClick} />)}
+            </div>
+        </div>
+    );
 }

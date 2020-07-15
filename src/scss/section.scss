@@ -1,8 +1,11 @@
 .section{
-  &--upcoming{}
-  &--top-rated{
-    //display: flex;
-    //flex-direction: column;
-    //flex-wrap: wrap;
+  &__heading {
+    border-left: 5px solid #b4d455;
+    font-size: 2em;
+    color: #212121;
+    text-transform: uppercase;
+    padding: .3em .5em;
+    margin-bottom: .5em;
+    text-align: left;
   }
 }

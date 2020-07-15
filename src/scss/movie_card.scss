@@ -3,6 +3,7 @@
   display: flex;
   background-blend-mode: color;
   height: 250px;
+  max-width: 250px;
   box-shadow: 5px 5px 5px #111;
   border-radius: 5px;
   &--fade {

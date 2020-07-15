@@ -43,11 +43,19 @@ class HomePage extends Component<any, any>{
         </Modal>) : null;
         return (
             <React.Fragment>
-                <section className="jumbtotron">
+                <section className="jumbotron mb-5">
                     <MovieSearchInput onChange={this.handleSearchChange} defaultValue={query} />
                 </section>
-                <UpcomingMoviesList collection={upcomingResults} loading={upcomingLoading} />
-                <PopularMoviesList collection={popularResults} loading={popularMoviesLoading} onClick={this.handleMovieSelect}/>
+
+                <section className="container mb-5">
+                    <h4 className="section__heading"> Upcoming Movies</h4>
+                    <UpcomingMoviesList collection={upcomingResults} loading={upcomingLoading} onClick={this.handleMovieSelect} />
+                </section>
+
+                <section className="container">
+                    <h4 className="section__heading">popular movies</h4>
+                    <PopularMoviesList collection={popularResults} loading={popularMoviesLoading} onClick={this.handleMovieSelect} />
+                </section>
                 {modal}
             </React.Fragment>
         );
