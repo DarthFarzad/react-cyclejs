@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@cycle/http": "^15.4.0",
+    "@cycle/run": "^5.4.0",
+    "@cycle/time": "^0.20.0",
+    "@reduxjs/toolkit": "^1.4.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -10,10 +14,22 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/react-router-redux": "^5.0.18",
+    "bootstrap": "^4.5.0",
+    "gh-pages": "^3.1.0",
+    "js-cookie": "^2.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-router-redux": "^4.0.8",
     "react-scripts": "3.4.1",
-    "typescript": "~3.7.2"
+    "redux": "^4.0.5",
+    "redux-cycles": "^0.4.1",
+    "typescript": "^3.9.6",
+    "xstream": "^11.12.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -35,5 +51,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-redux": "^7.1.9",
+    "node-sass": "^4.14.1",
+    "redux-devtools": "^3.5.0",
+    "source-map-loader": "^1.0.1",
+    "ts-loader": "^8.0.0"
   }
 }

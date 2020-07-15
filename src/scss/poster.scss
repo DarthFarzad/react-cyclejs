@@ -1,0 +1,10 @@
+.poster{
+  width:100%;
+  z-index: -1;
+  transition: transform 1s, filter .5s ease-in-out;
+  border-radius: inherit;
+  &:hover{
+    filter: blur(2px);
+    transform: scale(1.2);
+  }
+}

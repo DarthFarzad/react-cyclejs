@@ -1,0 +1,64 @@
+.modal{
+  background-color: rgba(0,0,0,0.5);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1072;
+  outline: 0;
+  &--open{
+    overflow-x: hidden;
+    overflow-y: auto;
+    opacity: 1;
+  }
+  &__container{
+    width: 780px;
+    height: 500px;
+    background: #f0f0ED;
+    border-radius: 5px;
+    position: relative;
+    .poster{
+      position: absolute;
+      top: 160px;
+      left: 40px;
+      z-index: 2;
+    }
+  }
+  &__hero{
+    height: 250px;
+    margin:0;
+    position: relative;
+    overflow: hidden;
+    z-index:1;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    &:before, &:after {
+      content:'';
+      width:100%;
+      height:100%;
+      position:absolute;
+      overflow: hidden;
+      top:0;
+      left:0;
+      transform: skewY(-2.2deg);
+      transform-origin:0 0;
+      -webkit-backface-visibility: hidden;
+    }
+    &:before {
+      background: var(--selected-movie-backdrop);
+      background-position: center;
+      background-size: cover;
+      z-index:-2;
+    }
+    &:after{
+      background: rgba(0,0,0,0.5);
+      z-index: -1;
+    }
+  }
+
+}

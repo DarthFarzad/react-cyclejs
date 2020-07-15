@@ -1,10 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import logo from '../logo.svg';
+import Header from '../components/header';
+import '../App.scss';
 
-function App() {
+function App({children}:any) {
   return (
     <div className="App">
+      <Header />
+        {children}
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
