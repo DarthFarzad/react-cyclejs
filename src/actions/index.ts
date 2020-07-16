@@ -51,7 +51,6 @@ export function receiveUpcomingMovies(movies:Array<Movie>) {
 }
 
 export function receiveSearchMovies(movies:Array<Movie>){
-    console.log('receiveSearchMovies', movies);
     return {
         type: ActionTypes.RECEIVED_MOVIES,
         payload: { movies }
