@@ -8,6 +8,7 @@ import upcomingMovies from './upcomingMovies';
 import upcomingMoviesLoading from './popularMoviesLoading';
 import showMovie from './showMovie';
 import selectMovie from './selectMovie';
+import nowPlaying from './nowPlaying';
 
 export default combineReducers({
     token,
@@ -18,4 +19,5 @@ export default combineReducers({
     searchResults,
     showMovie,
     selectMovie,
+    nowPlaying
 });

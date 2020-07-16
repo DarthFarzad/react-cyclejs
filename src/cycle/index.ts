@@ -159,6 +159,25 @@ export function requestMovieDetails(sources: any) {
         HTTP: request$
     }
 }
+export function requestNowPlaying(sources:any) {
+    const movie$ = sources.ACTION
+        .filter((action:any) => action.type === ActionTypes.REQUESTED_NOW_PLAYING);
+
+    const request$ = movie$
+        .map((action:any) => withAuthToken('now_playing', 'movie/now_playing'));
+
+    const response$ = sources.HTTP
+        .select('now_playing')
+        .flatten();
+
+    const action$ = xs.combine(response$, movie$)
+        .map((res:any) => actions.receiveUpcomingMovies(res[0].body.results));
+
+    return {
+        ACTION: action$,
+        HTTP: request$
+    }
+}
 
 // @ts-ignore
 export default combineCycles(
@@ -167,4 +186,5 @@ export default combineCycles(
     fetchUpcomingMovies,
     clearSearchResults,
     searchMovies,
-    requestMovieDetails);
+    requestMovieDetails,
+    requestNowPlaying);

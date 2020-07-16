@@ -91,3 +91,14 @@ export function deselectMovie(){
         type: ActionTypes.DESELECT_MOVIE
     }
 }
+
+export function requestNowPlaying(){
+    return {
+        type: ActionTypes.REQUESTED_NOW_PLAYING
+    }
+}
+export function receivedNowPlaying(movies:Array<Movie>) {
+    return {
+        type: ActionTypes.RECEIVED_NOW_PLAYING
+    }
+}
