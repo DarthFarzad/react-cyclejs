@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0432c42b7d81467b6613d39cd71cdddd",
+    "revision": "8e08313ec630b536e8426ca287f6647a",
     "url": "/react-cyclejs/index.html"
   },
   {
-    "revision": "bb5703fcf8edd6ca50c4",
+    "revision": "a2a436274996ffcc76ef",
     "url": "/react-cyclejs/static/css/main.946f5e11.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-cyclejs/static/js/2.51f3f9be.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "bb5703fcf8edd6ca50c4",
-    "url": "/react-cyclejs/static/js/main.16091ea7.chunk.js"
+    "revision": "a2a436274996ffcc76ef",
+    "url": "/react-cyclejs/static/js/main.d5ffd60c.chunk.js"
   },
   {
     "revision": "d63252d32d6026c12245",
