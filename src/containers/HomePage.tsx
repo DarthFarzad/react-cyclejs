@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { requestToken, selectMovie, searchMovies } from '../actions';
+import { requestToken, selectMovie } from '../actions';
 import Modal from './Modal';
-import MovieSearchInput from '../components/movieSearchInput';
+import Search from '../components/searchWithResults';
 import UpcomingMoviesList from '../components/upcomingMoviesList';
 import PopularMoviesList from '../components/popularMoviesList';
 import {Movie} from '../models/Movie';
@@ -30,7 +30,6 @@ class HomePage extends Component<any, any>{
 
     render() {
         const {
-            query,
             upcomingResults,
             upcomingLoading,
             popularResults,
@@ -44,7 +43,7 @@ class HomePage extends Component<any, any>{
         return (
             <React.Fragment>
                 <section className="jumbotron mb-5">
-                    <MovieSearchInput onChange={this.handleSearchChange} defaultValue={query} />
+                    <Search />
                 </section>
 
                 <section className="container mb-5">
@@ -65,7 +64,6 @@ export default connect(
     ({
          upcomingMovies, upcomingLoading,popularMovies, popularMoviesLoading, showMovie, selectMovie,
          searchResults}:any)=> ({
-        query: '',
         upcomingResults: upcomingMovies,
         upcomingLoading,
         popularResults: popularMovies,
@@ -74,5 +72,5 @@ export default connect(
         selectedMovie: selectMovie,
         searchResults
     }),
-    { requestToken, selectMovie, searchMovies }
+    { requestToken, selectMovie }
 )(HomePage);

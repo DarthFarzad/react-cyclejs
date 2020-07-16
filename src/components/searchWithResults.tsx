@@ -8,7 +8,7 @@ class SearchResults extends PureComponent<any, any> {
         super(props);
         this.handleChange = this.handleChange.bind(this);
         this.state = {
-            
+
         };
     }
 
