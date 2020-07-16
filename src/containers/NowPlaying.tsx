@@ -6,6 +6,7 @@ import Loading from '../components/loader';
 import NowPlayingList from '../components/nowPlayingList';
 import {Movie} from "../models/Movie";
 import MovieModal from "../components/MovieModal";
+import Search from "../components/searchWithResults";
 
 class NowPlaying extends Component<any, any>{
     constructor(props: any) {
@@ -29,6 +30,10 @@ class NowPlaying extends Component<any, any>{
         </Modal>) : null;
         return (
             <React.Fragment>
+                <section className="jumbotron mb-5">
+                    <Search />
+                </section>
+                
                 <section className="container mb-5">
                     <h4 className="section__heading">Now Playing</h4>
                     {content}
