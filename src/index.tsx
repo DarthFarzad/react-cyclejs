@@ -13,13 +13,14 @@ import * as serviceWorker from './serviceWorker';
 const store = configureStore();
 const MOUNT_NODE = document.getElementById('root');
 
+
 ReactDOM.render(
   <Provider store={store}>
-      <Router>
+      <Router basename={`${process.env.PUBLIC_URL}/`} >
           <App>
               <Switch>
-                  <Route exact path="/"><HomePage /></Route>
-                  <Route exact path="/now-playing"><NowPlaying /></Route>
+                  <Route exact path='/'><HomePage /></Route>
+                  <Route path="/now-playing"><NowPlaying /></Route>
                   <Route path="*"><NotFoundPage/></Route>
               </Switch>
           </App>

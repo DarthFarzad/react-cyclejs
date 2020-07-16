@@ -62,15 +62,13 @@ class HomePage extends Component<any, any>{
 }
 export default connect(
     ({
-         upcomingMovies, upcomingLoading,popularMovies, popularMoviesLoading, showMovie, selectMovie,
-         searchResults}:any)=> ({
+         upcomingMovies, upcomingLoading, popularMovies, popularMoviesLoading, showMovie, selectMovie}:any)=> ({
         upcomingResults: upcomingMovies,
         upcomingLoading,
         popularResults: popularMovies,
         popularMoviesLoading,
         showModal: showMovie,
-        selectedMovie: selectMovie,
-        searchResults
+        selectedMovie: selectMovie
     }),
     { requestToken, selectMovie }
 )(HomePage);

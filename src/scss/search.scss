@@ -1,0 +1,23 @@
+.search{
+  &__container {
+    position: relative;
+}
+  &__results{
+    position: absolute;
+    height:auto;
+    max-height: 600px;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    overflow-y: scroll;
+    background: #f3f3f3;
+    transition: max-height .5s ease-in-out;
+    z-index: 100;
+    &--collapsed {
+      max-height: 0;
+    }
+  }
+  &__poster{
+    width: inherit;
+  }
+}
