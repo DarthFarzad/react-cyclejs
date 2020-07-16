@@ -146,7 +146,7 @@ export function requestMovieDetails(sources: any) {
         .filter((action:any) => action.type === ActionTypes.SELECT_MOVIE);
 
     const request$ = movie$
-        .map((action:any) => withAuthToken('movie_details', 'movie/'+ action.payload.movie.id, {append_to_response: 'videos,with_cast'}));
+        .map((action:any) => withAuthToken('movie_details', 'movie/'+ action.payload.movie.id, {append_to_response: 'videos,release_dates'}));
 
     const response$ = sources.HTTP
         .select('movie_details')

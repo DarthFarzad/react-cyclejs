@@ -26,17 +26,24 @@ class MovieModal extends Component<any, any>{
     }
 
     render() {
-        const {poster_path, genres, overview, cast, videos} = this.props;
-        const { key } = this.state;
+        const {poster_path, genres, overview, cast, videos, release_dates} = this.props;
+        const {key} = this.state;
         const poster = 'https://image.tmdb.org/t/p/w300/' + poster_path;
         const poster_description = 'Cover Art for ' + poster_path;
+        let certification = "n/a";
+        if (release_dates) {
+            certification = release_dates.results[0].release_dates[0].certification;
+        }
+
         const genre_pils = genres ? genres.map((genre:Genre) =><span key={genre.id} className="badge badge-pill badge-light">{genre.name}</span>): null;
         return (
             <React.Fragment>
                 <section className="modal__container">
                     <img className="poster poster--small" src={poster} alt={poster_description}/>
                     <article className="modal__hero">
-                        <h2 className="modal__title offset-sm-4 col">{this.props.title} - PG</h2>
+                        <h2 className="modal__title offset-sm-4 col d-flex align-items-center">{this.props.title}
+                        <span className="badge badge-pill badge-warning u-text--small ml-3">{certification}</span>
+                        </h2>
                         <div className="modal__rating">ratings</div>
                     </article>
                     <div className="container">
