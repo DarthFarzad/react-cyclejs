@@ -52,7 +52,7 @@ class HomePage extends Component<any, any>{
                 </section>
 
                 <section className="container">
-                    <h4 className="section__heading">popular movies</h4>
+                    <h4 className="section__heading">top rated movies</h4>
                     <MoviesList collection={popularResults} loading={popularMoviesLoading} onClick={this.handleMovieSelect} />
                 </section>
                 {modal}
