@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import { requestToken, selectMovie } from '../actions';
 import Modal from './Modal';
 import Search from '../components/searchWithResults';
-import UpcomingMoviesList from '../components/upcomingMoviesList';
-import PopularMoviesList from '../components/popularMoviesList';
+import MoviesList from '../components/moviesList';
 import {Movie} from '../models/Movie';
 import MovieModal from '../components/MovieModal';
 
@@ -35,10 +34,11 @@ class HomePage extends Component<any, any>{
             popularResults,
             popularMoviesLoading,
             showModal,
-            selectedMovie
+            selectedMovie,
+            cast
         } = this.props;
         const modal = showModal ? (<Modal>
-            <MovieModal {...selectedMovie} />
+            <MovieModal {...selectedMovie} cast={cast} />
         </Modal>) : null;
         return (
             <React.Fragment>
@@ -47,13 +47,13 @@ class HomePage extends Component<any, any>{
                 </section>
 
                 <section className="container mb-5">
-                    <h4 className="section__heading"> Upcoming Movies</h4>
-                    <UpcomingMoviesList collection={upcomingResults} loading={upcomingLoading} onClick={this.handleMovieSelect} />
+                    <h4 className="section__heading">Upcoming Movies</h4>
+                    <MoviesList collection={upcomingResults} loading={upcomingLoading} onClick={this.handleMovieSelect} />
                 </section>
 
                 <section className="container">
                     <h4 className="section__heading">popular movies</h4>
-                    <PopularMoviesList collection={popularResults} loading={popularMoviesLoading} onClick={this.handleMovieSelect} />
+                    <MoviesList collection={popularResults} loading={popularMoviesLoading} onClick={this.handleMovieSelect} />
                 </section>
                 {modal}
             </React.Fragment>
@@ -62,13 +62,14 @@ class HomePage extends Component<any, any>{
 }
 export default connect(
     ({
-         upcomingMovies, upcomingLoading, popularMovies, popularMoviesLoading, showMovie, selectMovie}:any)=> ({
+         upcomingMovies, upcomingLoading, popularMovies, popularMoviesLoading, showMovie, selectMovie, cast}:any)=> ({
         upcomingResults: upcomingMovies,
         upcomingLoading,
         popularResults: popularMovies,
         popularMoviesLoading,
         showModal: showMovie,
-        selectedMovie: selectMovie
+        selectedMovie: selectMovie,
+        cast
     }),
     { requestToken, selectMovie }
 )(HomePage);

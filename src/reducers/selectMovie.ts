@@ -1,7 +1,7 @@
 import * as ActionTypes from '../ActionTypes';
 
 const initialState = {}
-export default function selectMovie (state ={}, action:any){
+export default function selectMovie (state = initialState, action:any){
     switch(action.type){
         case ActionTypes.RECEIVED_MOVIE:
         case ActionTypes.SELECT_MOVIE:

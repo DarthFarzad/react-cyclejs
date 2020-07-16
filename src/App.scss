@@ -8,9 +8,12 @@
 @import './scss/section';
 @import './scss/poster';
 @import './scss/modal';
-
+@import './scss/avatar';
 .App {
   text-align: center;
+}
+.outline-0{
+  border-color: rgba(0,0,0,0);
 }
 
 .App-logo {

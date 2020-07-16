@@ -5,7 +5,7 @@ export default function Header(){
     return (
         <header>
             <nav className="navbar navbar-expand-lg">
-                <a href="#" className="navbar-brand">Navbar</a>
+                <a href="#" className="navbar-brand">MoFlix</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon" />
                 </button>
@@ -18,7 +18,7 @@ export default function Header(){
                             <Link className="nav-link" to="/now-playing">Now Playing</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/">Popular</Link>
+                            <Link className="nav-link" to="/popular">Popular</Link>
                         </li>
                     </ul>
                 </div>

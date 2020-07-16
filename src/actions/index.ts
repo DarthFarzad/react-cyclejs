@@ -103,3 +103,11 @@ export function receivedNowPlaying(movies:Array<Movie>) {
         payload: { movies }
     }
 }
+
+export function receivedCast(cast: any) {
+    return {
+        type: ActionTypes.RECEIVED_CAST,
+        payload: { cast }
+    }
+
+}

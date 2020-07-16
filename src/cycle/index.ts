@@ -178,6 +178,25 @@ export function requestNowPlaying(sources:any) {
         HTTP: request$
     }
 }
+export function requestCast(sources:any){
+    const movie$ = sources.ACTION
+        .filter((action:any) => action.type === ActionTypes.SELECT_MOVIE);
+
+    const request$ = movie$
+        .map((action:any) => withAuthToken('cast', `movie/${action.payload.movie.id}/casts`));
+
+    const response$ = sources.HTTP
+        .select('cast')
+        .flatten();
+
+    const action$ = xs.combine(response$, movie$)
+        .map((res:any) => actions.receivedCast(res[0].body.cast));
+
+    return {
+        ACTION: action$,
+        HTTP: request$,
+    }
+}
 
 // TODO Make a nested list for the genres
 
@@ -189,4 +208,5 @@ export default combineCycles(
     clearSearchResults,
     searchMovies,
     requestMovieDetails,
-    requestNowPlaying);
+    requestNowPlaying,
+    requestCast);
