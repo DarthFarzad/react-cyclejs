@@ -99,6 +99,7 @@ export function requestNowPlaying(){
 }
 export function receivedNowPlaying(movies:Array<Movie>) {
     return {
-        type: ActionTypes.RECEIVED_NOW_PLAYING
+        type: ActionTypes.RECEIVED_NOW_PLAYING,
+        payload: { movies }
     }
 }

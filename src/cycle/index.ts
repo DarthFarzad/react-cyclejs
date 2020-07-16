@@ -171,13 +171,15 @@ export function requestNowPlaying(sources:any) {
         .flatten();
 
     const action$ = xs.combine(response$, movie$)
-        .map((res:any) => actions.receiveUpcomingMovies(res[0].body.results));
+        .map((res:any) => actions.receivedNowPlaying(res[0].body.results));
 
     return {
         ACTION: action$,
         HTTP: request$
     }
 }
+
+// TODO Make a nested list for the genres
 
 // @ts-ignore
 export default combineCycles(

@@ -4,6 +4,7 @@ import {Movie} from "../models/Movie";
 export default function nowPlaying(state:Array<Movie> = [], action:any) {
     switch(action.type){
         case ActionTypes.RECEIVED_NOW_PLAYING:
+            return action.payload.movies;
         case ActionTypes.REQUESTED_NOW_PLAYING:
         default:
             return state;
