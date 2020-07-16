@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import { connect } from 'react-redux';
+import PlaceholderImage from '../film-poster-placeholder.png';
 import MovieSearchInput from './movieSearchInput';
 import Loader from './loader';
 import {searchMovies} from "../actions";
@@ -24,26 +25,19 @@ class SearchResults extends PureComponent<any, any> {
         const search_result_classes = ['search__results'];
         if(!query)
             search_result_classes.push('search__results--collapsed');
-        const results = (<ul>
-            {(query && searchResults.length < 1) ? <div className="row"><div className="col"><Loader /></div></div> : null}
-            {searchResults ? searchResults.map((movie:Movie) => {
-                const poster_path = 'https://image.tmdb.org/t/p/w200' + movie.poster_path;
-                return (
-                    <div className="row">
-                        <div className="col">
-                            <div className="card">
-                                <div className="row">
-                                    <div className="col-1 p-0"><img className="search__poster" src={poster_path} alt=""/></div>
-                                    <div className="col-10">
-                                        <div className="card-body">{movie.title}</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                )
-            }) : null}
-        </ul>);
+        const results = (<div className="card">
+            <ul className="list-group list-group-flush">
+                {(query && searchResults.length < 1) ? <li className="list-group-item">Loading ...</li> : null}
+                {searchResults ? searchResults.map((movie:Movie) => (<li className="list-group-item p-0">
+                        <img src={movie.poster_path ?`https://image.tmdb.org/t/p/w200${movie.poster_path}` : PlaceholderImage}
+                             className="card-img-top search__poster mr-3"
+                             alt={`Poster for ${movie.title}`}
+                        />
+                            {movie.title}
+                        </li>)
+                ) : null}
+            </ul>
+        </div>);
         return (
             <div className="search__container">
                 <MovieSearchInput onChange={this.handleChange} defaultValue={query} value="" />
